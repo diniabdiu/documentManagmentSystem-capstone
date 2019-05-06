@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<%include partials/header%>
+<h1>Logini</h1>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.png">
-
-    <title>DashForge Responsive Bootstrap 4 Dashboard Template</title>
-
-    <!-- vendor css -->
-    <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="../../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-
-    <!-- DashForge CSS -->
-    <link rel="stylesheet" href="assets/css/dashforge.css">
-    <link rel="stylesheet" href="assets/css/dashforge.auth.css">
-  </head>
-  <body>
-
-    <form action="/signin" method="POST">
-      <input type="text" name="username" placeholder="username">
-      <input type="password" name="password" placeholder="password">
-      <button>Submit</button>
-    </form>
-
-
+</form action="/login" method="POST">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <button>Login</button>
+</form>
 
 
     <div class="content content-fixed content-auth">
@@ -59,16 +37,4 @@
       </div>
     </div>
 
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/feather-icons/feather.min.js"></script>
-    <script src="lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-    <script src="../../assets/js/dashforge.js"></script>
-
-    <!-- append theme customizer -->
-    <script src="lib/js-cookie/js.cookie.js"></script>
-    <script src="assets/js/dashforge.settings.js"></script>
-
-  </body>
-</html>
+<%include partials/footer%>
