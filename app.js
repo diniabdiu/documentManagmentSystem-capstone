@@ -39,12 +39,13 @@ app.get('/', function(req, res) {
 app.get('/index',isLoggedIn, function(req, res) {
     res.render('index');
 });
+// Show signup form
 app.get('/signup', function(req, res) {
     res.render('signup');
 });
 
-// Handling user sign up-signup=register
-app.post('signup', function(req, res) {
+// Handling user sign 
+app.post('/signup', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     User.register(new User({username}), password, function(err, user){
@@ -53,27 +54,38 @@ app.post('signup', function(req, res) {
             return res.render('signup');
         }
         passport.authenticate('local')(req, res, function() {
-            res.redirect('index');
+            res.redirect('/index');
         });
     });
+    // var newUser = new User({username: req.body.username});
+    // User.register(newUser, req.body.password, function(err, user) {
+    //     if(err) {
+    //         console.log(err);
+    //         return res.render('signup');
+    //     }
+    //     passport.authenticate('local')(req, res, function() {
+    //         res.redirect('/index');
+    //     });
+    // })
 });
 
-// Login routers
+// Login routes
+// Render login form
 app.get('/login', function(req, res) {
     res.render('login');
 });
-// Render login form
 // Login logic
-app.post('/login',passport.authenticate('local', {
-    successRedirect: '/index',
-    failureRedirect: '/login'
-}) ,function(req, res) {
-    
+app.post('/login', passport.authenticate('local', 
+    {
+        successRedirect: '/index',
+        failureRedirect: '/login'
+    }), function(req, res) {
+    console.log('test0');
 });
 
 app.get('/logout', function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 });
 
 function isLoggedIn(req, res, next) {
@@ -82,6 +94,7 @@ function isLoggedIn(req, res, next) {
     }
     res.redirect('/login');
 }
+
 
 // app.get('/register', function(req, res) {
 //     res.render('register');
