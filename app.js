@@ -6,7 +6,9 @@ var express                 = require('express'),
     bodyParser              = require('body-parser'),
     User                    = require('./models/user'),
     LocalStrategy           = require('passport-local'),
-    passportLocalMongoose   = require('passport-local-mongoose')
+    passportLocalMongoose   = require('passport-local-mongoose'),
+    upload                  = require('express-fileupload')
+
 
 mongoose.connect('mongodb://localhost/auth', { useNewUrlParser: true });
 
@@ -19,6 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(upload());
 
 app.use(require('express-session')({
     secret: 'Rusty is the best',
@@ -89,6 +92,44 @@ function isLoggedIn(req, res, next) {
     }
     res.redirect('/login');
 }
+
+// // SET STORAGE
+// var storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, 'uploads')
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.fieldname + '-' + Date.now())
+//     }
+//   })
+   
+//   var upload = multer({ storage: storage })
+// // Upload file 
+// app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
+//     const file = req.file
+//     if (!file) {
+//       const error = new Error('Please upload a file')
+//       error.httpStatusCode = 400
+//       return next(error)
+//     }
+//       res.send(file)
+    
+// });
+app.post('/index', function(req, res) {
+    if(req.files) {
+        var file = req.files.filename,
+            filename = file.name;
+            file.mv('./upload/' + filename, function(err) {
+                if(err) {
+                    console.log(err)
+                    res.send('error occured');
+                } else {
+                    res.send('Done !');
+                }
+            });
+    }
+});
+var newFile = fs.writeFileSync('satish.html', html);
 
 app.listen(3000, process.env.ip, function() {
     console.log(`Process is litesning to http://localhost:3000`);
