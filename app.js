@@ -32,9 +32,10 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 // Routes
 app.get('/', function(req, res) {
-    res.render('home');
+    res.render('signup');
 });
 app.get('/index',isLoggedIn, function(req, res) {
     res.render('index');
@@ -43,7 +44,6 @@ app.get('/index',isLoggedIn, function(req, res) {
 app.get('/signup', function(req, res) {
     res.render('signup');
 });
-
 // Handling user sign 
 app.post('/signup', function(req, res) {
     var username = req.body.username;
@@ -57,22 +57,18 @@ app.post('/signup', function(req, res) {
             res.redirect('/index');
         });
     });
-    // var newUser = new User({username: req.body.username});
-    // User.register(newUser, req.body.password, function(err, user) {
-    //     if(err) {
-    //         console.log(err);
-    //         return res.render('signup');
-    //     }
-    //     passport.authenticate('local')(req, res, function() {
-    //         res.redirect('/index');
-    //     });
-    // })
 });
 
 // Login routes
 // Render login form
 app.get('/login', function(req, res) {
-    res.render('login');
+    console.log('login route!');
+    
+    if(req.user) {
+        res.redirect('/index');
+    } else {
+        res.render('login');
+    }
 });
 // Login logic
 app.post('/login', passport.authenticate('local', 
@@ -80,7 +76,6 @@ app.post('/login', passport.authenticate('local',
         successRedirect: '/index',
         failureRedirect: '/login'
     }), function(req, res) {
-    console.log('test0');
 });
 
 app.get('/logout', function(req, res) {
@@ -95,10 +90,6 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
 }
 
-
-// app.get('/register', function(req, res) {
-//     res.render('register');
-// });
 app.listen(3000, process.env.ip, function() {
     console.log(`Process is litesning to http://localhost:3000`);
 });
