@@ -1,0 +1,68 @@
+<div class="modal fade" id="create-folder-form-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Folder</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="create-folder-form">
+                    <div class="form-group">
+                        <label for="folder">Folder Name</label>
+                        <input type="text" name="folderName" class="form-control" id="folder" required value="test">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        jQuery(document).ready(() => {
+            $ = jQuery;
+
+            $('#create-folder-form').on('submit', (e) => {
+                e.preventDefault();
+
+                var unindexed_array = $('#create-folder-form').serializeArray();
+                var indexed_array = {};
+
+                $.map(unindexed_array, function (n, i) {
+                    indexed_array[n['name']] = n['value'];
+                });
+
+                // create folder from api endpoint
+                $.ajax('/api/folder', {
+                    data: JSON.stringify(indexed_array),
+                    contentType: 'application/json',
+                    type: 'POST',
+                    success: (response) => {
+                        console.log("success: ", response.success);
+                        // if succesfuly created
+                        if(response.success == true) {
+                            $('#create-folder-form-modal').modal('toggle');
+                            $(document).trigger('update_sidebar');
+                        }
+                        
+                        // if not successfuly alert message
+                        if(response.success == false) {
+                            alert(response.message);
+                        }
+                    },
+                    error: (error) => {
+                        console.log(error);
+                    }
+                });
+
+                return false;
+            });
+        });
+    </script>
+
+</div>

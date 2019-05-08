@@ -43,6 +43,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="../../assets/css/dashforge.filemgr.css">
+
+  <!-- Load first scripts -->
+  <script src="../../lib/jquery/jquery.min.js" sync></script>
+  <script src="../../lib/bootstrap/js/bootstrap.bundle.min.js" sync></script>
 </head>
 
 <body class="app-filemgr">
@@ -59,10 +63,10 @@
               <button class="btn btn-xs btn-block btn-white" data-toggle="dropdown">New <i
                   data-feather="chevron-down"></i></button>
               <div class="dropdown-menu tx-13">
-                <a href="" class="dropdown-item"><i data-feather="folder"></i><span>Folder</span></a>
+                <%# <a href="" class="dropdown-item"><i data-feather="folder"></i><span>Folder</span></a> %>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Launch demo modal
+                <button type="button" class="btn btn-primary" style="width: 100%" data-toggle="modal" data-target="#create-folder-form-modal">
+                  Create folder
                 </button>
 
 
@@ -972,34 +976,11 @@
       </div>
     </div><!-- toast -->
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Folder</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="/location" method="POST">
-            <div class="form-group">
-              <label for="folder">Folder Name</label>
-              <input type="text" name="folderName" class="form-control" id="folder">
-            </div>
-            <div>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" id="saveButton" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="../../lib/jquery/jquery.min.js"></script>
-  <script src="../../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Create folder component modal -->
+  <%- include partials/create-folder-modal.ejs %>
+  <!-- Create folder component modal -->
+
   <script src="../../lib/feather-icons/feather.min.js"></script>
   <script src="../../lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
@@ -1021,6 +1002,9 @@
       }
     })
   </script>
+
+  <!-- Import Components -->
+  <%- include partials/component-scripts.ejs %>
 </body>
 
 </html>

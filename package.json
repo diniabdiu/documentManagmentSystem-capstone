@@ -19,6 +19,7 @@
   "homepage": "https://github.com/diniabdiu/documentManagmentSystem-capstone-#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-mongo": "^2.0.3",
     "consolidate": "^0.15.1",
     "ejs": "^2.6.1",
     "express": "^4.16.4",

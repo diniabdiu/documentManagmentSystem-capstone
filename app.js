@@ -1,4 +1,5 @@
 var express                 = require('express'),
+    session                 = require('express-session'),
     app                     = express(),
     path                    = require('path'),
     mongoose                = require('mongoose'),
@@ -16,7 +17,26 @@ mongoose.connect('mongodb://localhost/dms', { useNewUrlParser: true });
 
 var app = express();
 
+// save session between server restarts
+var MongoStore = require('connect-mongo')(session);
+app.use(session({
+    secret:'secret',
+    maxAge: new Date(Date.now() + 3600000),
+    store: new MongoStore(
+        // Following lines of code doesn't work
+        // with the connect-mongo version 1.2.1(2016-06-20).
+        //    {db:mongoose.connection.db},
+        //    function(err){
+        //        console.log(err || 'connect-mongodb setup ok');
+        //   }
+        {
+            mongooseConnection: mongoose.connection
+        }
+    )        
+}));
+
 app.use(express.static(__dirname + '/public'));
+app.use("/js", express.static(__dirname + '/node_modules'));
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -47,7 +67,7 @@ app.get('/index',isLoggedIn, function(req, res) {
     Location.find({}, function(err, locations) {
         if(err) return console.error(err);    
         res.render('index', {locations});  
-      });
+    });
 });
 // Show signup form
 app.get('/signup', function(req, res) {
@@ -151,6 +171,7 @@ app.post('/location', isLoggedIn, function(req, res) {
         
       });
 });
+
 app.get('/index/:id', function(req, res) {
     var objectId = ObjectId(req.params.id);
     Location.findOne({_id: objectId}, function(err, location) {
@@ -158,6 +179,95 @@ app.get('/index/:id', function(req, res) {
         res.render('index', {location});
     });
 });
+
+// API ROUTES
+// get folders
+app.get('/api/folder', isLoggedIn, function(req,res){
+    const locations = Location.find({}, function(err, locations) {
+        if(err) return console.error(err);
+        res.json(locations);
+    });
+});
+
+// create folder
+app.post('/api/folder', isLoggedIn, function(req,res){
+    // get folder name from request
+    var folderName = req.body.folderName;
+
+    console.log(folderName);
+
+    // if there is no folder name
+    if(folderName.length === 0) {
+        res.json({
+                success: false,
+                message: 'Please fill folder name!',
+                data: null
+        });
+        return;
+    }
+
+    // if folder name exists
+    const locations = Location.find({
+        name: folderName
+    }, function(err, items) {
+        if(err) {
+            res.json({
+                success: false,
+                message: `Server error!`,
+                data: null
+            });
+            return console.error(err);
+        }
+        
+        // if folder with name exists return error
+        if(items.length > 0) {
+            res.json({
+                success: false,
+                message: `Folder with name ${folderName}, already exists!`,
+                data: null,
+            });
+            return;
+        }
+    });
+
+    // crate new folder and return success
+    var location = new Location({name: folderName});
+    location.save(function (err, location) {
+        if (err) return console.error(err);
+        res.json({
+            success: true,
+            message: "Folder created successfully!",
+            data: null
+        });
+    });
+});
+
+// delete folder
+app.delete('/api/folder', isLoggedIn, function(req,res){
+    // get folder name from request
+    var id = req.body.id;
+
+    // if there is no folder name
+    if(id.length === 0) {
+        res.json({
+                success: false,
+                message: 'Plase add id!',
+                data: null
+        });
+        return;
+    }
+
+    // remove item by od
+    Location.find({ _id: id }).deleteMany((err) => {
+        res.json({
+            success: true,
+            message: 'Succesfully removed!',
+            data: null
+        });
+    }).exec();
+});
+
+
 
 app.listen(3000, process.env.ip, function() {
     console.log(`Process is litesning to http://localhost:3000`);

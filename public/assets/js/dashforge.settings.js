@@ -2,41 +2,6 @@
 $(function(){
   'use strict'
 
-  // Append settings
-  $.ajax({
-    url: '../../settings.html',
-    success: function(result){
-      $('body').append(result);
-      feather.replace();
-
-      var hasMode = Cookies.get('df-mode');
-      if(hasMode) {
-        $('head').append('<link id="dfMode" rel="stylesheet" href="../../assets/css/skin.'+hasMode+'.css">')
-        $('body').find('.df-mode').each(function(){
-          var name = $(this).attr('data-title');
-          if(name === hasMode) {
-            $(this).addClass('active');
-          } else {
-            $(this).removeClass('active');
-          }
-        })
-      }
-
-      var hasSkin = Cookies.get('df-skin');
-      if(hasSkin) {
-        $('head').append('<link id="dfSkin" rel="stylesheet" href="../../assets/css/skin.'+hasSkin+'.css">')
-        $('body').find('.df-skin').each(function(){
-          var name = $(this).attr('data-title');
-          if(name === hasSkin) {
-            $(this).addClass('active');
-          } else {
-            $(this).removeClass('active');
-          }
-        })
-      }
-    }
-  });
-
   // Template Customizer
   $('body').on('click', '#dfSettingsShow', function(e){
     e.preventDefault()
