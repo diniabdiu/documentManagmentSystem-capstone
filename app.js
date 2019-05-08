@@ -7,10 +7,12 @@ var express                 = require('express'),
     User                    = require('./models/user'),
     LocalStrategy           = require('passport-local'),
     passportLocalMongoose   = require('passport-local-mongoose'),
-    upload                  = require('express-fileupload')
+    upload                  = require('express-fileupload'),
+    Location                = require('./models/location'),
+    ObjectId                = mongoose.Types.ObjectId;
 
 
-mongoose.connect('mongodb://localhost/auth', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/dms', { useNewUrlParser: true });
 
 var app = express();
 
@@ -21,6 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
 app.use(upload());
 
 app.use(require('express-session')({
@@ -38,10 +41,13 @@ passport.deserializeUser(User.deserializeUser());
 
 // Routes
 app.get('/', function(req, res) {
-    res.render('signup');
+    res.redirect('/login');
 });
 app.get('/index',isLoggedIn, function(req, res) {
-    res.render('index');
+    Location.find({}, function(err, locations) {
+        if(err) return console.error(err);    
+        res.render('index', {locations});  
+      });
 });
 // Show signup form
 app.get('/signup', function(req, res) {
@@ -115,21 +121,43 @@ function isLoggedIn(req, res, next) {
 //       res.send(file)
     
 // });
-app.post('/index', function(req, res) {
-    if(req.files) {
-        var file = req.files.filename,
-            filename = file.name;
-            file.mv('./upload/' + filename, function(err) {
-                if(err) {
-                    console.log(err)
-                    res.send('error occured');
-                } else {
-                    res.send('Done !');
-                }
-            });
+// app.post('/index', function(req, res) {
+//     if(req.files) {
+//         var file = req.files.filename,
+//             filename = file.name;
+//             file.mv('./upload/' + filename, function(err) {
+//                 if(err) {
+//                     console.log(err)
+//                     res.send('error occured');
+//                 } else {
+//                     res.send('Done !');
+//                 }
+//             });
+//     }
+// });
+// var newFile = fs.writeFileSync('satish.html', html);
+app.post('/location', isLoggedIn, function(req, res) {
+    console.log(req.body);
+    var folderName = req.body.folderName;
+    if(folderName.length === 0) {
+        res.json({success: false});
+        return;
     }
+    var location = new Location({name: folderName});
+    location.save(function (err, location) {
+        if (err) return console.error(err);
+        console.log(location.name + " saved to location collection.");
+        res.redirect('/index');
+        
+      });
 });
-var newFile = fs.writeFileSync('satish.html', html);
+app.get('/index/:id', function(req, res) {
+    var objectId = ObjectId(req.params.id);
+    Location.findOne({_id: objectId}, function(err, location) {
+        if(err) return console.error(err);
+        res.render('index', {location});
+    });
+});
 
 app.listen(3000, process.env.ip, function() {
     console.log(`Process is litesning to http://localhost:3000`);
