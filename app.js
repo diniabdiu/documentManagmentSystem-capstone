@@ -23,12 +23,6 @@ app.use(session({
     secret:'secret',
     maxAge: new Date(Date.now() + 3600000),
     store: new MongoStore(
-        // Following lines of code doesn't work
-        // with the connect-mongo version 1.2.1(2016-06-20).
-        //    {db:mongoose.connection.db},
-        //    function(err){
-        //        console.log(err || 'connect-mongodb setup ok');
-        //   }
         {
             mongooseConnection: mongoose.connection
         }
@@ -66,13 +60,17 @@ app.get('/', function(req, res) {
 app.get('/index',isLoggedIn, function(req, res) {
     Location.find({}, function(err, locations) {
         if(err) return console.error(err);    
-        res.render('index', {locations});  
+        res.render('index', {
+            locations,
+            parentId: null
+        });  
     });
 });
 // Show signup form
 app.get('/signup', function(req, res) {
     res.render('signup');
 });
+
 // Handling user sign 
 app.post('/signup', function(req, res) {
     var username = req.body.username;
@@ -111,7 +109,7 @@ app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/login');
 });
-
+// check if user is logged in
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
@@ -156,27 +154,32 @@ function isLoggedIn(req, res, next) {
 //     }
 // });
 // var newFile = fs.writeFileSync('satish.html', html);
-app.post('/location', isLoggedIn, function(req, res) {
-    console.log(req.body);
-    var folderName = req.body.folderName;
-    if(folderName.length === 0) {
-        res.json({success: false});
-        return;
-    }
-    var location = new Location({name: folderName});
-    location.save(function (err, location) {
-        if (err) return console.error(err);
-        console.log(location.name + " saved to location collection.");
-        res.redirect('/index');
+
+
+// app.post('/location', isLoggedIn, function(req, res) {
+//     console.log(req.body);
+//     var folderName = req.body.folderName;
+//     if(folderName.length === 0) {
+//         res.json({success: false});
+//         return;
+//     }
+//     var location = new Location({name: folderName});
+//     location.save(function (err, location) {
+//         if (err) return console.error(err);
+//         console.log(location.name + " saved to location collection.");
+//         res.redirect('/index');
         
-      });
-});
+//       });
+// });
 
 app.get('/index/:id', function(req, res) {
     var objectId = ObjectId(req.params.id);
     Location.findOne({_id: objectId}, function(err, location) {
         if(err) return console.error(err);
-        res.render('index', {location});
+        res.render('index', {
+            location,
+            parentId: req.params.id
+        });
     });
 });
 
@@ -192,9 +195,12 @@ app.get('/api/folder', isLoggedIn, function(req,res){
 // create folder
 app.post('/api/folder', isLoggedIn, function(req,res){
     // get folder name from request
-    var folderName = req.body.folderName;
+    const {
+        folderName,
+        type
+    } = req.body;
 
-    console.log(folderName);
+    const parentId = req.body.parent || null;
 
     // if there is no folder name
     if(folderName.length === 0) {
@@ -207,8 +213,8 @@ app.post('/api/folder', isLoggedIn, function(req,res){
     }
 
     // if folder name exists
-    const locations = Location.find({
-        name: folderName
+    Location.find({
+        name: folderName,
     }, function(err, items) {
         if(err) {
             res.json({
@@ -227,18 +233,23 @@ app.post('/api/folder', isLoggedIn, function(req,res){
                 data: null,
             });
             return;
+        } else {
+            // if it does not exist
+            // crate new folder and return success
+            var location = new Location({
+                name: folderName,
+                type: type,
+                parent: parentId
+            });
+            location.save(function (err, location) {
+                if (err) return console.error(err);
+                res.json({
+                    success: true,
+                    message: "Folder created successfully!",
+                    data: location
+                });
+            });
         }
-    });
-
-    // crate new folder and return success
-    var location = new Location({name: folderName});
-    location.save(function (err, location) {
-        if (err) return console.error(err);
-        res.json({
-            success: true,
-            message: "Folder created successfully!",
-            data: null
-        });
     });
 });
 
@@ -266,7 +277,9 @@ app.delete('/api/folder', isLoggedIn, function(req,res){
         });
     }).exec();
 });
+app.post('/list/:id', isLoggedIn, function(req, res) {
 
+});
 
 
 app.listen(3000, process.env.ip, function() {

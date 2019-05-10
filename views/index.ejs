@@ -29,10 +29,7 @@
   <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
   <meta name="author" content="ThemePixels">
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.png">
-
-  <title>DashForge Responsive Bootstrap 4 Dashboard Template</title>
+  <title>Document Managment System</title>
 
   <!-- vendor css -->
   <link href="../../lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -65,7 +62,8 @@
               <div class="dropdown-menu tx-13">
                 <%# <a href="" class="dropdown-item"><i data-feather="folder"></i><span>Folder</span></a> %>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" style="width: 100%" data-toggle="modal" data-target="#create-folder-form-modal">
+                <button type="button" class="btn btn-primary" style="width: 100%" data-toggle="modal"
+                  data-target="#create-folder-form-modal">
                   Create folder
                 </button>
 
@@ -81,17 +79,17 @@
               <button class="btn btn-xs btn-block btn-primary" data-toggle="dropdown">Upload <i
                   data-feather="chevron-down"></i></button>
               <div class="dropdown-menu tx-13">
-                <!-- <form action="/uploadfile" method="POST">
+                <form action="/uploadfile" method="POST">
                   <button class="btn btn-primary" type="button">
-                  <input type="file" name="document" class="btn btn-primary" />
-                    <span class="spinner-border spinner-border-lg" role="status" aria-hidden="true"></span>
+                    <input type="file" name="document" class="btn btn-primary" />
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     <span class="sr-only">Loading...</span>
                   </button>
-                </form>  -->
-                <form method="POST" enctype="multipart/form-data" action="/index">
+                </form>
+                <%# <form method="POST" enctype="multipart/form-data" action="/index">
                   <input class="btn btn-sm btn-primary" value="" type="file" name="filename">
                   <input type="submit" value="upload">
-                </form>
+                </form> %>
               </div><!-- dropdown-menu -->
             </div><!-- dropdown -->
           </div>
@@ -118,14 +116,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -147,14 +138,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -176,14 +160,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -206,14 +183,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -235,14 +205,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -275,14 +238,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -301,14 +257,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -327,14 +276,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -353,14 +295,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -379,14 +314,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -405,14 +333,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -434,14 +355,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -463,14 +377,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -492,14 +399,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -521,14 +421,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -551,14 +444,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -580,14 +466,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -609,14 +488,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -638,14 +510,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -667,14 +532,7 @@
                     <div class="dropdown-file">
                       <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
                       <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
                         <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
                         <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
                             data-feather="folder"></i>Move to</a>
                         <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
@@ -692,124 +550,7 @@
                   </div>
                 </div><!-- col -->
                 <div class="d-none d-xl-block wd-100p ht-10"></div>
-                <div class="col-6 col-sm-4 col-md-3 col-xl mg-t-10">
-                  <div class="card card-file">
-                    <div class="dropdown-file">
-                      <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
-                        <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
-                        <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
-                            data-feather="folder"></i>Move to</a>
-                        <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
-                        <a href="#" class="dropdown-item delete"><i data-feather="trash"></i>Delete</a>
-                      </div>
-                    </div><!-- dropdown -->
-                    <div class="card-file-thumb tx-pink">
-                      <i class="far fa-file-video"></i>
-                    </div>
-                    <div class="card-body">
-                      <h6><a href="" class="link-02">MiniMovie.mp4</a></h6>
-                      <p>MP4 File</p>
-                      <span>22.2mb</span>
-                    </div>
-                  </div>
-                </div><!-- col -->
-                <div class="col-6 col-sm-4 col-md-3 col-xl mg-t-10">
-                  <div class="card card-file">
-                    <div class="dropdown-file">
-                      <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
-                        <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
-                        <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
-                            data-feather="folder"></i>Move to</a>
-                        <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
-                        <a href="#" class="dropdown-item delete"><i data-feather="trash"></i>Delete</a>
-                      </div>
-                    </div><!-- dropdown -->
-                    <div class="card-file-thumb tx-orange">
-                      <i class="far fa-file-code"></i>
-                    </div>
-                    <div class="card-body">
-                      <h6><a href="" class="link-02">home.html</a></h6>
-                      <p>HTML Document</p>
-                      <span>43.9kb</span>
-                    </div>
-                  </div>
-                </div><!-- col -->
-                <div class="col-6 col-sm-4 col-md-3 col-xl mg-t-10">
-                  <div class="card card-file">
-                    <div class="dropdown-file">
-                      <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
-                        <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
-                        <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
-                            data-feather="folder"></i>Move to</a>
-                        <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
-                        <a href="#" class="dropdown-item delete"><i data-feather="trash"></i>Delete</a>
-                      </div>
-                    </div><!-- dropdown -->
-                    <div class="card-file-thumb tx-primary">
-                      <i class="far fa-file-code"></i>
-                    </div>
-                    <div class="card-body">
-                      <h6><a href="" class="link-02">style.css</a></h6>
-                      <p>CSS File</p>
-                      <span>43.9kb</span>
-                    </div>
-                  </div>
-                </div><!-- col -->
-                <div class="col-6 col-sm-4 col-md-3 col-xl mg-t-10">
-                  <div class="card card-file">
-                    <div class="dropdown-file">
-                      <a href="" class="dropdown-link" data-toggle="dropdown"><i data-feather="more-vertical"></i></a>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#modalViewDetails" data-toggle="modal" class="dropdown-item details"><i
-                            data-feather="info"></i>View Details</a>
-                        <a href="" class="dropdown-item important"><i data-feather="star"></i>Mark as Important</a>
-                        <a href="#modalShare" data-toggle="modal" class="dropdown-item share"><i
-                            data-feather="share"></i>Share</a>
-                        <a href="" class="dropdown-item download"><i data-feather="download"></i>Download</a>
-                        <a href="#modalCopy" data-toggle="modal" class="dropdown-item copy"><i
-                            data-feather="copy"></i>Copy to</a>
-                        <a href="#modalMove" data-toggle="modal" class="dropdown-item move"><i
-                            data-feather="folder"></i>Move to</a>
-                        <a href="#" class="dropdown-item rename"><i data-feather="edit"></i>Rename</a>
-                        <a href="#" class="dropdown-item delete"><i data-feather="trash"></i>Delete</a>
-                      </div>
-                    </div><!-- dropdown -->
-                    <div class="card-file-thumb tx-purple">
-                      <i class="far fa-file-code"></i>
-                    </div>
-                    <div class="card-body">
-                      <h6><a href="" class="link-02">package.json</a></h6>
-                      <p>JSON File</p>
-                      <span>2.3kb</span>
-                    </div>
-                  </div>
-                </div><!-- col -->
-                <div class="col-6 col-sm-4 col-md-3 col-xl mg-t-10">
-                </div><!-- col -->
+
               </div><!-- row -->
             </div>
           </div>
@@ -818,88 +559,9 @@
       </div><!-- filemgr-wrapper -->
     </div>
   </div><!-- content -->
-  <div class="modal fade effect-scale" id="modalViewDetails" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body pd-20 pd-sm-30">
-          <button type="button" class="close pos-absolute t-15 r-20" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
 
-          <h5 class="tx-18 tx-sm-20 mg-b-30">View Details</h5>
 
-          <div class="row mg-b-10">
-            <div class="col-4">Filename:</div>
-            <div class="col-8">Medical Certificate.pdf</div>
-          </div><!-- row -->
-          <div class="row mg-b-10">
-            <div class="col-4">File ype:</div>
-            <div class="col-8">PDF File</div>
-          </div><!-- row -->
-          <div class="row mg-b-10">
-            <div class="col-4">File Size:</div>
-            <div class="col-8">10.45 KB</div>
-          </div><!-- row -->
-          <div class="row mg-b-10">
-            <div class="col-4">Created:</div>
-            <div class="col-8">Monday, July 02, 2018 9:34am</div>
-          </div><!-- row -->
-          <div class="row mg-b-10">
-            <div class="col-4">Modified:</div>
-            <div class="col-8">Monday, July 02, 2018 9:34am</div>
-          </div><!-- row -->
-          <div class="row mg-b-10">
-            <div class="col-4">Accessed:</div>
-            <div class="col-8">Monday, July 02, 2018 9:34am</div>
-          </div><!-- row -->
-          <div class="row mg-b-10">
-            <div class="col-4">Description:</div>
-            <div class="col-8">
-              <textarea class="form-control mg-t-5" rows="2" placeholder="Add description"></textarea>
-            </div>
-          </div><!-- row -->
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary mg-sm-l-5" data-dismiss="modal">Close</button>
-        </div><!-- modal-footer -->
-      </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-  </div><!-- modal -->
-
-  <div class="modal fade effect-scale" id="modalShare" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body pd-20 pd-sm-30">
-          <button type="button" class="close pos-absolute t-15 r-20" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-
-          <h5 class="tx-18 tx-sm-20 mg-b-30">Share With Others</h5>
-
-          <div class="mg-t-20">
-            <label class="d-block">Other users:</label>
-            <input class="form-control" placeholder="Enter names or email addresses">
-            <div class="dropdown mg-t-10">
-              Rights: <a href="" class="dropdown-link" data-toggle="dropdown">Allow editing <i
-                  class="icon ion-chevron-down tx-12"></i></a>
-            </div><!-- dropdown -->
-            <hr>
-            <label class="d-block">More:</label>
-            <nav class="nav nav-social">
-              <a href="" class="nav-link"><i data-feather="facebook"></i></a>
-              <a href="" class="nav-link"><i data-feather="twitter"></i></a>
-            </nav>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Share</button>
-        </div><!-- modal-footer -->
-      </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-  </div><!-- modal -->
-
-  <div class="modal fade effect-scale" id="modalCopy" tabindex="-1" role="dialog" aria-hidden="true">
+  <%# <div class="modal fade effect-scale" id="modalCopy" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body pd-20 pd-sm-30">
@@ -926,7 +588,7 @@
         </div><!-- modal-footer -->
       </div><!-- modal-content -->
     </div><!-- modal-dialog -->
-  </div><!-- modal -->
+  </div><!-- modal --> %>
 
   <div class="modal fade effect-scale" id="modalMove" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -956,27 +618,7 @@
       </div><!-- modal-content -->
     </div><!-- modal-dialog -->
   </div><!-- modal -->
-
-  <div class="pos-fixed b-10 r-10">
-    <div id="toast" class="toast bg-dark bd-0 wd-300" data-delay="3000" role="alert" aria-live="assertive"
-      aria-atomic="true">
-      <div class="toast-header bg-transparent bd-white-1">
-        <h6 class="tx-white mg-b-0 mg-r-auto">Downloading</h6>
-        <button type="button" class="ml-2 mb-1 close tx-normal tx-shadow-none" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="toast-body pd-10 tx-white">
-        <h6 class="mg-b-0">Medical_Certificate.pdf</h6>
-        <span class="tx-color-03 tx-11">1.2mb of 4.5mb</span>
-        <div class="progress ht-5 mg-t-5">
-          <div class="progress-bar wd-50p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-          </div>
-        </div>
-      </div>
-    </div><!-- toast -->
-  </div>
-
+  
   <!-- Create folder component modal -->
   <%- include partials/create-folder-modal.ejs %>
   <!-- Create folder component modal -->

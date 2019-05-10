@@ -2,8 +2,6 @@ import {
     html,
     render
 } from '/js/lit-html/lit-html.js';
-console.log('left-sidebar!');
-console.log(html);
 
 
 // handlers
@@ -14,7 +12,7 @@ const itemClickHandler = (e) => {
     // create folder from api endpoint
     $.ajax('/api/folder', {
         data: JSON.stringify({
-            id: e.target.id
+            id: e.target.id,
         }),
         contentType: 'application/json',
         type: 'DELETE',
@@ -37,11 +35,36 @@ const itemClickHandler = (e) => {
 }
 
 // declare templates
-const navbarItem = (name, id) => {
+const navbarItemFolder = (name, id) => {
     return (
         html `
-            <a href="#" class="nav-link">${name}</a>
-            <a href="#" class="nav-link btn btn-outline-danger" @click=${itemClickHandler}  id="${id}"> delete ${name} x </a>
+        <div class="row">
+            <div class="col-md-8">
+                <a href="#" class="nav-link btn btn-light ">${name}</a>
+                <hr>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="nav-link btn btn-danger btn-sm" @click=${itemClickHandler}  id="${id}"> Delete</a>
+                <hr>
+            </div>
+        </div>
+        `
+    )
+};
+
+const navbarItemFile = (name, id) => {
+    return (
+        html `
+        <div class="row">
+            <div class="col-md-8">
+                <a href="#" class="nav-link btn btn-light ">File: ${name}</a>
+                <hr>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="nav-link btn btn-danger btn-sm" @click=${itemClickHandler}  id="${id}"> Delete</a>
+                <hr>
+            </div>
+        </div>
         `
     )
 };
@@ -65,7 +88,7 @@ $(document).ready(() => {
                 const navbarList = [];
                 data.forEach(item => {
                     navbarList.push(
-                        navbarItem(item.name, item._id)
+                        navbarItemFolder(item.name, item._id)
                     )
                 });
 
