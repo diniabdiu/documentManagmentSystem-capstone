@@ -39,7 +39,7 @@ const navbarItemFolder = (name, id) => {
     return (
         html `
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 pickFolder" id="${id}">
                 <a href="#" class="nav-link btn btn-light ">${name}</a>
                 <hr>
             </div>
@@ -77,6 +77,17 @@ $(document).ready(() => {
     // if root does not exist do not execute
     if (!sidebarNavRoot) return;
 
+    // $('.pickFolder').click(function(e) {
+    //     console.log(e);
+    //     var idFolder = e.target.id;
+        // console.log(e);
+        // idFolder.click();
+        // var id = $(this).attr('id');
+
+        // var folderId = e.target.id;
+    //     console.log(folderId);
+    //   });
+
 
     // update sidebar function
     const updateSidebar = () => {
@@ -102,4 +113,7 @@ $(document).ready(() => {
     $(document).on('update_sidebar', updateSidebar);
 
     $(document).trigger('update_sidebar');
+
+
+    
 })

@@ -79,17 +79,10 @@
               <button class="btn btn-xs btn-block btn-primary" data-toggle="dropdown">Upload <i
                   data-feather="chevron-down"></i></button>
               <div class="dropdown-menu tx-13">
-                <form action="/uploadfile" method="POST">
-                  <button class="btn btn-primary" type="button">
-                    <input type="file" name="document" class="btn btn-primary" />
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    <span class="sr-only">Loading...</span>
-                  </button>
-                </form>
-                <%# <form method="POST" enctype="multipart/form-data" action="/index">
-                  <input class="btn btn-sm btn-primary" value="" type="file" name="filename">
-                  <input type="submit" value="upload">
-                </form> %>
+              <form id="uploadForm">
+                  <input id="file" type="file">
+                  <button id="submit-file">Submit</button>
+              </form>
               </div><!-- dropdown-menu -->
             </div><!-- dropdown -->
           </div>
@@ -618,6 +611,44 @@
       </div><!-- modal-content -->
     </div><!-- modal-dialog -->
   </div><!-- modal -->
+
+
+  <script type="text/javascript">
+    jQuery(document).ready(() => {
+        $ = jQuery;
+
+        var id = '';
+        $('body').on('click', '.pickFolder', function(e) {
+          id = $(this).attr('id');
+          console.log(typeof id, id);
+        });
+
+        
+          $('#submit-file').click(e => {
+            e.preventDefault();
+            if (id.length != 0) {
+              var formData = new FormData();
+              formData.append('file', $('#file')[0].files[0]);
+              formData.append('locationId', id);
+
+              $.ajax({
+                  url : '/upload',
+                  type : 'POST',
+                  data : formData,
+                  contentType: 'application/json',
+                  processData: false, 
+                  contentType: false, 
+                  success : function(data) {
+                      console.log(data);
+                  }
+              });
+              return false;
+            }
+            alert('duhesh me zgedh ni fodler');
+          });
+        
+    });
+</script>
   
   <!-- Create folder component modal -->
   <%- include partials/create-folder-modal.ejs %>

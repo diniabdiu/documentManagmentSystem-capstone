@@ -12,6 +12,7 @@
                 <form id="create-folder-form">
                     <input type="hidden" name="parent" value="<%= parentId ? parentId : null %>" />
                     <input type="hidden" name="type" value="folder" />
+                    <input type="hidden" name="type" value="file" />
                     <div class="form-group">
                         <label for="folder">Folder Name</label>
                         <input type="text" name="folderName" class="form-control" id="folder" required value="test">
@@ -60,8 +61,9 @@
                     error: (error) => {
                         console.log(error);
                     }
+                    
                 });
-
+                
                 return false;
             });
         });

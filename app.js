@@ -10,7 +10,9 @@ var express                 = require('express'),
     passportLocalMongoose   = require('passport-local-mongoose'),
     upload                  = require('express-fileupload'),
     Location                = require('./models/location'),
-    ObjectId                = mongoose.Types.ObjectId;
+    ObjectId                = mongoose.Types.ObjectId,
+    multer                  = require('multer'),
+    DocumentFile                = require('./models/documentfile');
 
 
 mongoose.connect('mongodb://localhost/dms', { useNewUrlParser: true });
@@ -38,7 +40,6 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
-app.use(upload());
 
 app.use(require('express-session')({
     secret: 'Rusty is the best',
@@ -118,28 +119,34 @@ function isLoggedIn(req, res, next) {
 }
 
 // // SET STORAGE
-// var storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, 'uploads')
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, file.fieldname + '-' + Date.now())
-//     }
-//   })
-   
-//   var upload = multer({ storage: storage })
-// // Upload file 
-// app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
-//     const file = req.file
-//     if (!file) {
-//       const error = new Error('Please upload a file')
-//       error.httpStatusCode = 400
-//       return next(error)
-//     }
-//       res.send(file)
-    
-// });
-// app.post('/index', function(req, res) {
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname + '-' + Date.now())
+    }
+});
+
+var upload = multer({ storage: storage });
+
+// Upload file 
+app.post('/upload', upload.single('file'), (req, res, next) => {
+
+    // save into db
+    var newDocFile = new DocumentFile({
+        locationId: ObjectId(req.body.id),
+        path: req.file.path,
+        originalname: req.file.originalname
+    });
+
+    DocumentFile.addDoc(newDocFile, function(err, document) {
+        if (err) {throw err};
+        res.json({success: true, document: document})
+    });
+});
+
+// app.post('/files/:locationId', function(req, res) {
 //     if(req.files) {
 //         var file = req.files.filename,
 //             filename = file.name;
