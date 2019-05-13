@@ -12,7 +12,7 @@ var express                 = require('express'),
     Location                = require('./models/location'),
     ObjectId                = mongoose.Types.ObjectId,
     multer                  = require('multer'),
-    DocumentFile                = require('./models/documentfile');
+    DocumentFile            = require('./models/documentfile');
 
 
 mongoose.connect('mongodb://localhost/dms', { useNewUrlParser: true });
@@ -135,7 +135,7 @@ app.post('/upload', upload.single('file'), (req, res, next) => {
 
     // save into db
     var newDocFile = new DocumentFile({
-        locationId: ObjectId(req.body.id),
+        locationId: ObjectId(req.body.locationId),
         path: req.file.path,
         originalname: req.file.originalname
     });
@@ -284,8 +284,17 @@ app.delete('/api/folder', isLoggedIn, function(req,res){
         });
     }).exec();
 });
-app.post('/list/:id', isLoggedIn, function(req, res) {
 
+// get files of specific folder
+app.get('/api/folder/:id', function(req, res) {
+    console.log('get files');
+    DocumentFile.getDocByLocationId(ObjectId(req.params.id), (error, documents) => {
+        if (error) {
+            res.json({success: false, error: 'error in db'})
+            return;
+        }
+        res.json({success: true, documents});
+    })
 });
 
 
