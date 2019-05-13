@@ -3,15 +3,8 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var DocFileSchema = mongoose.Schema({
     locationId: ObjectId,
-    path: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    originalname: {
-        type: String,
-        required: true
-    }
+    path: { type: String, required: true, trim: true },
+    originalname: { type: String, required: true }
 }, {versionKey: false});
 
 var DocumentFile = module.exports = mongoose.model('DocumentFile', DocFileSchema);
@@ -21,7 +14,7 @@ module.exports.getDocs = function (callback) {
 }
 
 module.exports.getDocByLocationId = function(id, callback) {
-    DocumentFile.findById(id, callback);
+    DocumentFile.find({locationId: id}, callback);
 }
 
 module.exports.addDoc = function(doc, callback) {

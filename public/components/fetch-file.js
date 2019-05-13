@@ -83,7 +83,7 @@ $(document).ready(() => {
                 const navbarList = [];
                 data.forEach(item => {
                     navbarList.push(
-                        navbarItemFile(item.name, item._id)
+                        navbarItemFolder(item.name, item._id)
                     )
                 });
 
